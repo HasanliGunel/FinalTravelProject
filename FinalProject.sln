@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00Core", "00Core", "{2C26565A-C50E-40F6-9A11-D7FC1431F73A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{4DBDEBCF-F0B6-425F-A694-251741D695CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01Entities", "01Entities", "{D4E7062B-7578-4DC7-8939-898E54F5DC42}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{94933CFF-DF22-42E5-9E9E-145CD02E8808}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02DataAccess", "02DataAccess", "{1ECC82F7-F88C-49FA-AD8E-630EAE913A8A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{24A1F59D-5F13-4705-9FA6-656138F8C8F6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03Business", "03Business", "{DCF6A2CD-1C87-47D0-B072-075D69FA56E5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{664FF486-9BCA-41FD-B209-5C5C4462F2AD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelWebUI", "TravelWebUI\TravelWebUI.csproj", "{E067CCC2-B5BF-4A8B-84B0-D9E56543976A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4DBDEBCF-F0B6-425F-A694-251741D695CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DBDEBCF-F0B6-425F-A694-251741D695CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DBDEBCF-F0B6-425F-A694-251741D695CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DBDEBCF-F0B6-425F-A694-251741D695CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94933CFF-DF22-42E5-9E9E-145CD02E8808}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94933CFF-DF22-42E5-9E9E-145CD02E8808}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94933CFF-DF22-42E5-9E9E-145CD02E8808}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94933CFF-DF22-42E5-9E9E-145CD02E8808}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24A1F59D-5F13-4705-9FA6-656138F8C8F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24A1F59D-5F13-4705-9FA6-656138F8C8F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24A1F59D-5F13-4705-9FA6-656138F8C8F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24A1F59D-5F13-4705-9FA6-656138F8C8F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{664FF486-9BCA-41FD-B209-5C5C4462F2AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{664FF486-9BCA-41FD-B209-5C5C4462F2AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{664FF486-9BCA-41FD-B209-5C5C4462F2AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{664FF486-9BCA-41FD-B209-5C5C4462F2AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E067CCC2-B5BF-4A8B-84B0-D9E56543976A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E067CCC2-B5BF-4A8B-84B0-D9E56543976A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E067CCC2-B5BF-4A8B-84B0-D9E56543976A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E067CCC2-B5BF-4A8B-84B0-D9E56543976A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4DBDEBCF-F0B6-425F-A694-251741D695CF} = {2C26565A-C50E-40F6-9A11-D7FC1431F73A}
+		{94933CFF-DF22-42E5-9E9E-145CD02E8808} = {D4E7062B-7578-4DC7-8939-898E54F5DC42}
+		{24A1F59D-5F13-4705-9FA6-656138F8C8F6} = {1ECC82F7-F88C-49FA-AD8E-630EAE913A8A}
+		{664FF486-9BCA-41FD-B209-5C5C4462F2AD} = {DCF6A2CD-1C87-47D0-B072-075D69FA56E5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {28773E26-5645-4578-87EA-C5D6E33A34AD}
+	EndGlobalSection
+EndGlobal

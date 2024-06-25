@@ -1,0 +1,31 @@
+﻿@model DestinationCreateDto 
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Ölkə Adı</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhotoUrl" class="control-label">Şəkil</label>
+                <input asp-for="PhotoUrl" name="PhotoUrl" class="form-control" type="file" />
+                <span asp-validation-for="PhotoUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group d-flex align-items-center">
+                <span style="margin-right:1rem;">Ana səhifədə olsun:</span>
+                <input asp-for="IsHomePage" type="checkbox" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="@DefaultConstantValue.ADD_MESSAGE" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">@DefaultConstantValue.RETURN_TO_BACK</a>
+</div>

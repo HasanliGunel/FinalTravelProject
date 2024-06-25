@@ -1,0 +1,91 @@
+﻿@model List<Guide>
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <form action="Guide/Create" method="get">
+                    <p>
+                        <button class="btn btn-primary">@DefaultConstantValue.ADD_MESSAGE</button>
+                    </p>
+                </form>
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Adı</th>
+                            <th>Soyadı</th>
+                            <th>InstagramLink</th>
+                            <th>FacebookLink</th>
+                            <th>TwitterLink</th>
+                            <th>LinkedInLink</th>
+                            <th>Ana Səhifə</th>
+                            <th>Şəkil</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.SurName</td>
+                                <td>@item.InstagramLink</td>
+                                <td>@item.FacebookLink</td>
+                                <td>@item.TwitterLink</td>
+                                <td>@item.LinkedInLink</td>
+                                <td>@(item. IsHome? "Bəli" : "Xeyr")</td>
+                                <td><img src="@item.PhotoUrl" style="width:100px; height:100px" alt="Destnation Image" /></td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.ID">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a> |
+                                    <a item-value="@item.ID" item-title="@item.Name" class="btnDelete">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(".btnDelete").click(function (e) {
+            Swal.fire({
+                title: 'Əminsən?',
+                text: "Geri döndərə bilməyəcəksiz!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonText: "Ləğv et",
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Bəli '
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let itemID = e.currentTarget.attributes[0].value;
+                    let itemName = e.currentTarget.attributes[1].value;
+                    $.ajax({
+                        method: "POST",
+                        url: "guide/delete/",
+                        data: {
+                            id: itemID
+                        }
+                    })
+                    Swal.fire({
+                        title: 'Silindi!',
+                        text: "'" + itemName + "' silindi",
+                        icon: 'success',
+
+                    }).then((result) => {
+                        window.location = "guide"
+                    })
+
+                }
+            })
+        })
+    </script>
+}

@@ -1,0 +1,89 @@
+﻿@model List<PackageDto>
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <form action="Package/Create" method="get">
+                    <p>
+                        <button class="btn btn-primary">@DefaultConstantValue.ADD_MESSAGE</button>
+                    </p>
+                </form>
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Tur adı</th>
+                            <th>Ölkə</th>
+                            <th>Müddət</th>
+                            <th>Qiymət</th>
+                            <th>İnsan sayı</th>
+                            <th>Şəkil</th>
+                            <th>Ana Səhifə</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.DestinationName</td>
+                                <td>@item.Duration</td>
+                                <td>@item.Price</td>
+                                <td>@item.PeopleCount</td>
+                                <td><img src="@item.PhotoUrl" style="width:100px; height:100px" alt="Food Image" /></td>
+                                <td>@(item.IsHome ? "Bəli" : "Xeyr")</td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.ID">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a> |
+                                    <a item-value="@item.ID" item-title="@item.Name" class="btnDelete">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(".btnDelete").click(function (e) {
+            Swal.fire({
+                title: 'Əminsən?',
+                text: "Geri döndərə bilməyəcəksiz!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonText: "Ləğv et",
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Bəli '
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let itemID = e.currentTarget.attributes[0].value;
+                    let itemName = e.currentTarget.attributes[1].value;
+                    $.ajax({
+                        method: "POST",
+                        url: "package/delete/",
+                        data: {
+                            id: itemID
+                        }
+                    })
+                    Swal.fire({
+                        title: 'Silindi!',
+                        text: "'" + itemName + "' silindi",
+                        icon: 'success',
+
+                    }).then((result) => {
+                        window.location = "package"
+                    })
+
+                }
+            })
+        })
+    </script>
+}

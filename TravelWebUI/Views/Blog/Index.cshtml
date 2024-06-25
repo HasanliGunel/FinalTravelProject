@@ -1,0 +1,151 @@
+﻿@model BlogViewModel
+<body>
+    <!-- Header Start -->
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+                <h3 class="display-4 text-white text-uppercase">Blog</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="">Home</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">Blog</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+    <!-- Booking Start -->
+    
+    <!-- Booking End -->
+    <!-- Blog Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-8" id="postArea">
+                    <div class="row pb-3">
+                        @foreach (var item in Model.Blogs)
+                        {
+                            <div class="col-md-6 mb-4 pb-2">
+                                <div class="blog-item">
+                                    <div class="position-relative">
+                                        <img class="img-fluid w-100" src="@item.PhotoUrl" style="height: 250px !important;" alt="">
+                                        <div class="blog-date">
+                                            <h6 class="font-weight-bold mb-n1">@item.CreateDate.Day</h6>
+                                            <small class="text-white text-uppercase">@item.CreateDate.ToString("MMMM")</small>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white p-4">
+                                        <div class="d-flex mb-2">
+                                            @* <a class="text-primary text-uppercase text-decoration-none" href="">Admin</a> *@
+                                            @* <span class="text-primary px-2">|</span> *@
+                                             <a class="text-primary text-uppercase text-decoration-none" href="">@item.CategoryName</a> 
+                                        </div>
+                                        <a class="h5 m-0 text-decoration-none" asp-action="Details" asp-controller="Blog" asp-route-id="@item.BlogId">@item.Title</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                        
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mt-5 mt-lg-0">
+                    
+
+                    <!-- Category List -->
+                    <div class="mb-5">
+                        <h4 class="text-uppercase mb-4" style="letter-spacing: 5px;">Categories</h4>
+                        <div class="bg-white" style="padding: 30px;">
+                            <ul class="list-inline m-0">
+                                @foreach (var item in Model.categoryOfBlogs)
+                                { 
+                                <li class="mb-3 d-flex justify-content-between align-items-center ">
+                                        <a item-value="@item.ID" item-title="@item.Name" class="text-dark categoryBtn" href="/Blog/Category/@item.ID">
+                                    <i class="fa fa-angle-right text-primary mr-2 "></i>
+                                    @item.Name
+                                    </a> 
+                                    @* <span class="badge badge-primary badge-pill">150</span> *@
+                                </li>
+
+                                 } 
+                            </ul>
+                        </div>
+                    </div>
+
+                 
+
+                    <!-- Tag Cloud -->
+                    <div class="mb-5">
+                        @* @Html.Partial("_TagsPartial",Model.Tags) *@
+                        @* <partial name="_TagsPartial" /> *@
+                        @*  @Html.ActionLink(); *@
+
+                        <h4 class="text-uppercase mb-4" style="letter-spacing: 5px;">Tag Cloud</h4>
+                        <div class="d-flex flex-wrap m-n1">
+                            @foreach (var item in Model.Tags)
+                            {
+                                <a item-value="@item.ID" item-title="@item.Name" href="/Blog/Tag/@item.ID" class="btn btn-light m-1 tagBtn">@item.Name</a>
+
+                            }
+                            @* <a href="" class="btn btn-light m-1">Development</a>
+                            <a href="" class="btn btn-light m-1">Marketing</a>
+                            <a href="" class="btn btn-light m-1">SEO</a>
+                            <a href="" class="btn btn-light m-1">Writing</a>
+                            <a href="" class="btn btn-light m-1">Consulting</a> *@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Blog End -->
+</body>
+
+@* <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script>
+    $(document).on('click', '.tagBtn', function (e) {
+        $('html, body').animate({
+            scrollTop: $("#postArea").offset().top
+        }, 100);
+        let itemID = e.currentTarget.attributes[0].value;
+        let itemName = e.currentTarget.attributes[1].value;
+        console.log(itemID);
+        $.ajax({
+            method: "GET",
+            url: "blog/index/",
+            data: {
+                id: itemID
+            },
+            dataType: 'JSON',
+            success: function (response) {
+                $('#postArea').html(response.posts);
+            }
+        })
+
+    });
+</script> *@
+
+
+@*
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.category-link').click(function(e) {
+                e.preventDefault();
+                var categoryId = $(this).data('category-id');
+                $.ajax({
+                    url: '/Blog/ByCategory/' + categoryId,
+                    type: 'GET',
+                    success: function (result) {
+                        $('#posts').html(result);
+                    },
+                    error: function () {
+                        alert('Error loading posts');
+                    }
+                });
+            });
+        });
+    </script>
+} *@
